@@ -1,0 +1,154 @@
+<% if @account.present? %>
+	<div class="card mb-4">
+		<div class="card-body">
+			<div class="row">
+				<div align="center">
+					<p class="mb-0"><b>Bank Account details</b></p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Account No.</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">
+						<%= @account.account_number %>
+					</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">IFSC Code</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">
+						<%= @account.ifsc_code %>
+					</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-3">
+					<p class="mb-0">Swift number</p>
+				</div>
+				<div class="col-sm-9">
+					<p class="text-muted mb-0">
+						<%= @account.swift_number  %>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% else %>
+		<%= form_with url: "/bank_create" do |form| %>
+			<div id="div1">
+				<div class="card mb-4">
+					<div class="card-body">
+						<div class="row">
+							<div align="center">
+								<p class="mb-0"><b>Add user Details</b></p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">First Name</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									<%= form.text_field :first_name, class: "form-control", :required => true, autofocus: true  %>
+								</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Last Name</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									<%= form.text_field :last_name, class: "form-control", :required => true, autofocus: true  %>
+								</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Phone number</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									<%= form.number_field :phone, class: "form-control", :required => true, autofocus: true  %>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div align="center">1/2</div>
+			</div>
+			<div id="div2" style="display: none;">
+				<div class="card mb-4">
+					<div class="card-body">
+						<div class="row">
+							<div align="center">
+								<p class="mb-0"><b>Add Bank Account</b></p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Account No.</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									<%= form.text_field :account_number, class: "form-control", :required => true, autofocus: true  %>
+								</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">IFSC Code</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									<%= form.text_field :ifsc_code, class: "form-control", :required => true, autofocus: true  %>
+								</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<p class="mb-0">Swift number</p>
+							</div>
+							<div class="col-sm-9">
+								<p class="text-muted mb-0">
+									<%= form.number_field :swift_number, input_html: { min: '0', max: '5', step: '1' }, class: "form-control", :required => true, autofocus: true  %>
+								</p>
+							</div>
+						</div>
+						<br>
+						<%= form.submit "Submit", style: "float:right;" %>
+							<% end %>
+					</div>
+				</div>
+				<div align="center">2/2</div>
+			</div>
+			<div>
+				<button style="float:left;" onclick="pageChange('prev')">Prev</button>
+				<button style="float:right;" onclick="pageChange('next')">Next</button>
+			</div>
+			<% end %>
+				<script type="text/javascript">
+				function pageChange(val) {
+					if(val == "prev") {
+						document.getElementById("div1").style.display = "block";
+						document.getElementById("div2").style.display = "none";
+					} else {
+						document.getElementById("div1").style.display = "none";
+						document.getElementById("div2").style.display = "block";
+					}
+				}
+				</script>
