@@ -80,7 +80,7 @@
 							</div>
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">
-									<%= form.number_field :phone, class: "form-control", :required => true, autofocus: true  %>
+									<%= form.number_field :phone, class: "form-control", :required => true, autofocus: true, maxlength: 10  %>
 								</p>
 							</div>
 						</div>
@@ -103,7 +103,7 @@
 							</div>
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">
-									<%= form.text_field :account_number, class: "form-control", :required => true, autofocus: true  %>
+									<%= form.text_field :account_number, class: "form-control", :required => true, autofocus: true, maxlength: 16  %>
 								</p>
 							</div>
 						</div>
@@ -114,7 +114,7 @@
 							</div>
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">
-									<%= form.text_field :ifsc_code, class: "form-control", :required => true, autofocus: true  %>
+									<%= form.text_field :ifsc_code, class: "form-control", :required => true, autofocus: true, maxlength: 10 %>
 								</p>
 							</div>
 						</div>
@@ -125,7 +125,7 @@
 							</div>
 							<div class="col-sm-9">
 								<p class="text-muted mb-0">
-									<%= form.number_field :swift_number, input_html: { min: '0', max: '5', step: '1' }, class: "form-control", :required => true, autofocus: true  %>
+									<%= form.number_field :swift_number, maxlength: 11, class: "form-control", :required => true, autofocus: true  %>
 								</p>
 							</div>
 						</div>
@@ -137,18 +137,20 @@
 				<div align="center">2/2</div>
 			</div>
 			<div>
-				<button style="float:left;" onclick="pageChange('prev')">Prev</button>
+				<button style="float:left;display: none;" id="prev" onclick="pageChange('prev')">Prev</button>
 				<button style="float:right;" onclick="pageChange('next')">Next</button>
 			</div>
 			<% end %>
-				<script type="text/javascript">
-				function pageChange(val) {
-					if(val == "prev") {
-						document.getElementById("div1").style.display = "block";
-						document.getElementById("div2").style.display = "none";
-					} else {
-						document.getElementById("div1").style.display = "none";
-						document.getElementById("div2").style.display = "block";
-					}
-				}
-				</script>
+<script type="text/javascript">
+	function pageChange(val) {
+		if(val == "prev") {
+			document.getElementById("prev").style.display = "none";
+			document.getElementById("div1").style.display = "block";
+			document.getElementById("div2").style.display = "none";
+		} else {
+			document.getElementById("prev").style.display = "block";
+			document.getElementById("div1").style.display = "none";
+			document.getElementById("div2").style.display = "block";
+		}
+	}
+</script>

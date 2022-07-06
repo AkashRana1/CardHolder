@@ -1,17 +1,19 @@
-<h1>Create new User</h1>
-<%= form_with(model: @user, local: true) do |f| %>
-<div class="form-group">
-  <%= f.label :email %><br/>
-  <%= f.email_field :email, class: "form-control", :required => true, autofocus: true  %>
+<div align="center" style="margin: 50px;padding: 30px;border: 1px solid black;background-color: white;">
+  <h1>Create new User</h1>
+  <%= form_with(model: @user, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :email %><br/>
+    <%= f.email_field :email, class: "form-control", :required => true, autofocus: true  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %><br/>
+    <%= f.password_field :password, class: "form-control", :required => true, autofocus: true  %>
+  </div>
+   
+  <div class="form-group">
+    <%= f.submit "Create User", class: "btn btn-primary" %>
+  </div>
+   
+  <% end %>
+  <%= button_to "Sign in", '/login', :method => "get", class: "btn btn-info"  %>
 </div>
-<div class="form-group">
-  <%= f.label :password %><br/>
-  <%= f.password_field :password, class: "form-control", :required => true, autofocus: true  %>
-</div>
- 
-<div class="form-group">
-  <%= f.submit %>
-</div>
- 
-<% end %>
-<%= button_to "Sign in", '/login', :method => "get" %>
